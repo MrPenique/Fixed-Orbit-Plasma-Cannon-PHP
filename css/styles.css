@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+html{
+	font-family: 'Press Start 2P', cursive;
+	margin: 0;
+	padding: 0;
+	background-color: #151515;
+}
+/*LINKS*/
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: grey;
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: lightblue;
+}
+
+/*functions*/
+.background-grey{
+	background-color: #151515;
+}
+.padding-margin-null{
+	margin: 0;
+	padding: 0;
+}
+
+/*class*/
+.logo{
+	opacity: 0.5;
+	transition: 2s;
+	padding: 5px;
+}
+.logo:hover{
+	opacity: 0.2;
+}
+.break{
+	width: 30%;
+	background-color: red;
+	margin: 0 auto;
+	
+}
+
+.head{
+	text-align: center;
+	color: white;
+}
+.form{
+	text-align: center;
+	color: #e0e0e0;
+	min-height: 200px;
+	padding: 5px;
+}
+.inputs{
+	color: black;
+	height: 30px;
+}
+.menu{
+	border-radius: 0px !important;
+
+}
+.title{
+	color: black;
+	width: 50%;
+	margin: auto;
+	margin-top: 5px;
+}
+
