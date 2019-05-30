@@ -55,6 +55,14 @@ function Check(that) {
             document.getElementById("sinput5").style.display = "none";//timeout
             document.getElementById("sinput6").style.display = "none";//socket
         }
+        if (that.value == "ssl") {
+            document.getElementById("sinput1").style.display = "inline";//Target ip
+            document.getElementById("sinput1_2").style.display = "none";//source ip
+            document.getElementById("sinput2").style.display = "inline";//Time
+            document.getElementById("sinput3").style.display = "none";//port
+            document.getElementById("sinput5").style.display = "none";//timeout
+            document.getElementById("sinput6").style.display = "none";//socket
+        }
         if (that.value == "404") {
             document.getElementById("sinput1").style.display = "inline";//Target ip
             document.getElementById("sinput1_2").style.display = "none";//source ip

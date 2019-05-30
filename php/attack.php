@@ -1,7 +1,6 @@
 <?php
 ?>
-<form name="input" action="" method="post"> 
-	Method:
+<form name="input" action="php/startattack.php" method="post"> 
 	<select name="method" class="inputs" onchange="Check(this);" required>
 		<option  selected disabled selected value> -- select a Method -- </option>
 		<optgroup label="Layer 3:">
@@ -26,11 +25,11 @@
 		<optgroup label="Layer 7 - to Minecraft:">
 			<option value="minecraftbandwitdh">bandwitdh Flood</option>
 	</select>
-	<input class="inputs" type="text" name="ip" size="15" maxlength="150" class="main" placeholder="Target" value = "" id="sinput1" style="display: none;"> 
-	<input class="inputs" type="text" name="srcip" size="15" maxlength="150" class="main" placeholder="Source HOST" value = "" id="sinput1_2" style="display: none;"> 
-	<input class="inputs" type="number" name="time" size="14" maxlength="20" class="main" placeholder="Time (in seconds)" value = "" id="sinput2" style="display: none;"> 
-	<input class="inputs" type="number" name="port" size="5" maxlength="5" class="main" placeholder="Port" value = "" style="display: none;" id="sinput3"> 
-	<input class="inputs" type="number" name="timedout" size="5" maxlength="5" class="main" placeholder="Timedout (default: 30)" value = "30" style="display: none;" id="sinput5">
-	<input class="inputs" type="number" name="builds" size="15" maxlength="150" class="main" placeholder="Build socket" value = "100" id="sinput6" style="display: none;"> 
-	<input class="inputs" type="submit" name="attack" value="Start the Attack"> 
+	<div><input class="inputs" type="text" name="ip" size="15" maxlength="150" class="main" placeholder="Target" value = "" id="sinput1" style="display: none;"></div>
+	<div><input class="inputs" type="text" name="srcip" size="15" maxlength="150" class="main" placeholder="Source HOST" value = "" id="sinput1_2" style="display: none;"></div>
+	<div><input class="inputs" type="number" name="time" size="14" maxlength="20" class="main" placeholder="Time (in seconds)" value = "" id="sinput2" style="display: none;"></div>
+	<div><input class="inputs" type="number" name="port" size="5" maxlength="5" class="main" placeholder="Port" value = "" style="display: none;" id="sinput3"></div>
+	<div><input class="inputs" type="number" name="timedout" size="5" maxlength="5" class="main" placeholder="Timedout (default: 30)" value = "30" style="display: none;" id="sinput5"></div>
+	<div><input class="inputs" type="number" name="builds" size="15" maxlength="150" class="main" placeholder="Build socket" value = "100" id="sinput6" style="display: none;"></div>
+	<div><input class="start-btn" type="submit" name="attack" value="Start the Attack"></div>
 </form>

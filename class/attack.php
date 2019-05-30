@@ -6,16 +6,25 @@ class attack{
 	protected $ip; 
 	protected $srcip; 
 	protected $port;
-	protected $exec_time;
-	function __construct($socketn, $lenght, $timedout, $ip, $srcip, $port, $exec_time) {
+	protected $max_time;
+	public $packets = 0; 
+	/*function __construct(){
+        $a = func_get_args();
+        $i = func_num_args();
+        if (method_exists($this,$f='__construct'.$i)) {
+            call_user_func_array(array($this,$f),$a);
+        }
+    }*/
+	function __construct($socketn, $lenght, $timedout, $ip, $srcip, $port, $max_time) {
 		$this->setSocketn($socketn);
 		$this->setLenght($lenght);
 		$this->setTimedout($timedout);
 		$this->setIp($ip);
 		$this->setSrcip($srcip);
 		$this->setPort($port);
-		$this->setExec_time($exec_time);
+		$this->setMax_time($max_time);
 	}
+	
 	public function getSocketn(){
 		return $this->socketn;
 	}
@@ -63,12 +72,12 @@ class attack{
 		$this->port = $port;
 	}
 
-	public function getExec_time(){
-		return $this->exec_time;
+	public function getMax_time(){
+		return $this->max_time;
 	}
 
-	public function setExec_time($exec_time){
-		$this->exec_time = $exec_time;
+	public function setMax_time($max_time){
+		$this->max_time = $max_time;
 	}
 }
 ?>

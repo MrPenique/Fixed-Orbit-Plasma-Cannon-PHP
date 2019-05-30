@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-html{
+html, body{
 	font-family: 'Press Start 2P', cursive;
 	margin: 0;
 	padding: 0;
@@ -31,11 +31,64 @@ a:active {
 	padding: 0;
 }
 
+/*inputs*/
+.inputs{
+	color: black;
+	height: 30px;
+	border-radius: 2px;
+	border: none;
+	background-color: #e8e8e8;
+	width: 250px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.start-btn{
+	background-color: #932424;
+	color: white;
+	margin-top: 5px;
+	padding: 15px 30px;
+	border: none;
+	text-align: center;
+ 	text-decoration: none;
+ 	display: inline-block;
+ 	transition: .3s;
+}
+.start-btn:hover{
+	background-color: #630404;
+}
+
+/*Menu*/
+.menu{
+	border-radius: 0px !important;
+	background-color: #070707 !important;
+	max-height: 50px !important;
+}
+.title{
+	color: black;
+	width: 10%;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	min-width: 150px;
+}
+.navbars{
+	transition: .3s;
+	max-height: 50px;
+	text-align: center;
+}
+.navbars:hover{
+	background-color: #600000 !important;
+}
+.menu-img{
+	margin-top: 0px !important;
+}
 /*class*/
 .logo{
 	opacity: 0.5;
 	transition: 2s;
 	padding: 5px;
+	width: 600px;
 }
 .logo:hover{
 	opacity: 0.2;
@@ -57,18 +110,6 @@ a:active {
 	min-height: 200px;
 	padding: 5px;
 }
-.inputs{
-	color: black;
-	height: 30px;
-}
-.menu{
-	border-radius: 0px !important;
 
-}
-.title{
-	color: black;
-	width: 50%;
-	margin: auto;
-	margin-top: 5px;
-}
+
 

