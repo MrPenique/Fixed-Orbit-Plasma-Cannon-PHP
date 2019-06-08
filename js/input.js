@@ -84,7 +84,6 @@ function Check(that) {
             document.getElementById("sinput1_2").style.display = "none";//source ip
             document.getElementById("sinput2").style.display = "inline";//Time
             document.getElementById("sinput3").style.display = "inline";//port
-            document.getElementById("sinput4").style.display = "none";//length
             document.getElementById("sinput5").style.display = "inline";//timeout
             document.getElementById("sinput6").style.display = "inline";//socket
         }

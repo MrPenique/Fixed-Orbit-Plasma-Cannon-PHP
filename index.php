@@ -20,6 +20,7 @@ include_once "html/header.html";
 			    <li class="nav-item navbars"><a class="nav-link" href="index.php?page=portscan">PORT SCAN</a></li>
 			    <li class="nav-item navbars"><a class="nav-link" href="https://github.com/mogyiii/Fixed-Orbit-Plasma-Cannon-PHP"><img class="menu-img" src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" width="30"></a></li>
 			    <li class="nav-item navbars"><a class="nav-link" href="https://www.youtube.com/channel/UCt2EuaiD_6CbfTV0uGUsX1g"><img class="menu-img" src="https://seeklogo.com/images/Y/youtube-icon-logo-521820CDD7-seeklogo.com.png" width="40"></a></li>
+			    <li class="nav-item navbars"><a class="nav-link" href="https://www.patreon.com/user?u=19370638"><img class="menu-img" src="https://s3.amazonaws.com/pas-wordpress-media/content/uploads/2015/03/Patreon-Logo.png" width="30"></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -49,6 +50,7 @@ include_once "html/header.html";
 </div>
 <div class="break">
 </div>
+
 </body> 
 </html> 
 
