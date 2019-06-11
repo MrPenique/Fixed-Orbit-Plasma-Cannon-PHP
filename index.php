@@ -38,7 +38,7 @@ include_once "html/header.html";
 			    	include_once "php/attack.php";
 			    	break;
 			    case "portscan":
-			    	include_once "html/portscanner.html";
+			    	include_once "php/portscan.php";
 			    	break;
 			    default:
 			        echo "<h3 class='bg-danger'>404 Error page not found!</h3>";

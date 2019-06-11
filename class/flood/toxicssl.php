@@ -1,11 +1,10 @@
 <?php
-include_once "../header.php";
 class toxicssl{
-    public $ip;
-    public $port;
-    public $timedout;
-    public $socketn;
-    public $max_time;
+    private $ip;
+    private $port;
+    private $timedout;
+    private $socketn;
+    private $max_time;
     public function __construct($ip, $port, $timedout, $socketn, $max_time) {
         $this->ip = $ip;
         $this->port = $port;

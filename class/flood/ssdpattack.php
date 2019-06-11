@@ -1,9 +1,8 @@
 <?php
-include_once "../header.php";
 class ssdpattack{
-	public $ip;
-	public $port;
-	public $max_time;
+	private $ip;
+	private $port;
+	private $max_time;
 	public function __construct($ip, $port, $max_time) {
 		$this->ip = $ip;
 		$this->port = $port;

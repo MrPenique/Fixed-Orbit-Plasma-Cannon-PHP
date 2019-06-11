@@ -1,8 +1,7 @@
 <?php
-include_once "../header.php";
 class ntpattack{
-	public $ip;
-	public $max_time;
+	private $ip;
+	private $max_time;
 	public function __construct($ip, $max_time) {
 		$this->ip = $ip;
 		$this->max_time = $max_time;

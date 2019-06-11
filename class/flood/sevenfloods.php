@@ -1,9 +1,8 @@
 <?php
-include_once "../header.php";
 class sevenfloods{
-	public $ip;
-	public $max_time;
-	public $method;
+	private $ip;
+	private $max_time;
+	private $method;
 	public function __construct($ip, $max_time, $method) {
 		$this->ip = $ip;
 		$this->max_time = $max_time;
@@ -24,8 +23,7 @@ class sevenfloods{
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, "CICA");
-					
-				$login = curl_exec($ch);
+				curl_exec($ch);
 			}
 			if($this->method=="GET"){
 				$ch = curl_init();  
@@ -33,8 +31,7 @@ class sevenfloods{
 				curl_setopt($ch, CURLOPT_HEADER, 0);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-					
-				$login = curl_exec($ch);
+				curl_exec($ch);
 			}
 			if($this->method=="404"){
 				$ch = curl_init();  
@@ -42,8 +39,7 @@ class sevenfloods{
 				curl_setopt($ch, CURLOPT_HEADER, 0);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-					
-				$login = curl_exec($ch);
+				curl_exec($ch);
 			}
 		}
 	}

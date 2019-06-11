@@ -1,10 +1,9 @@
 <?php
-include_once "../header.php";
 class rudy{
-	public $ip;
-	public $port;
-	public $socketn;
-	public $max_time;
+	private $ip;
+	private $port;
+	private $socketn;
+	private $max_time;
 	public function __construct($ip, $port, $socketn, $max_time) {
 		$this->ip = $ip;
 		$this->port = $port;

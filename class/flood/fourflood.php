@@ -1,11 +1,10 @@
 <?php
-include_once "../header.php";
 class fourflood{
-	public $ip;
-	public $port;
-	public $timedout;
-	public $max_time;
-	public $method;
+	private $ip;
+	private $port;
+	private $timedout;
+	private $max_time;
+	private $method;
 	public function __construct($ip, $port, $timedout, $max_time, $method) {
 		$this->ip = $ip;
 		$this->port = $port;
