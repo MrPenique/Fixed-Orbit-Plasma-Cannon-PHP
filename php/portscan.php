@@ -19,11 +19,12 @@
 <div id="response">
 	
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".start-btn").click(function(){
             $.post("php/portscanner.php",
-    		{
+            {
     			method: $('#method').val(),
       			ip: $('#host').val(),
       			protokol: $('#protokol').val(),

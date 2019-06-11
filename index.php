@@ -16,7 +16,7 @@ include_once "html/header.html";
   		<div class="collapse navbar-collapse " id="collapsibleNavbar">
     		<ul class="navbar-nav">
 			    <li class="nav-item navbars"><a class="nav-link" href="index.php?page=attack">DOS</a></li>
-			    <li class="nav-item navbars"><a class="nav-link" href="">DDOS</a></li>
+			    <li class="nav-item navbars"><a class="nav-link" href="index.php?page=ddos">DDOS</a></li>
 			    <li class="nav-item navbars"><a class="nav-link" href="index.php?page=portscan">PORT SCAN</a></li>
 			    <li class="nav-item navbars"><a class="nav-link" href="https://github.com/mogyiii/Fixed-Orbit-Plasma-Cannon-PHP"><img class="menu-img" src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" width="30"></a></li>
 			    <li class="nav-item navbars"><a class="nav-link" href="https://www.youtube.com/channel/UCt2EuaiD_6CbfTV0uGUsX1g"><img class="menu-img" src="https://seeklogo.com/images/Y/youtube-icon-logo-521820CDD7-seeklogo.com.png" width="40"></a></li>
@@ -39,6 +39,9 @@ include_once "html/header.html";
 			    	break;
 			    case "portscan":
 			    	include_once "php/portscan.php";
+			    	break;
+			    case "ddos":
+			    	include_once "php/ddos.php";
 			    	break;
 			    default:
 			        echo "<h3 class='bg-danger'>404 Error page not found!</h3>";
