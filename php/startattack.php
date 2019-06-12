@@ -16,7 +16,7 @@
 	if(!empty($_POST['ip'])){
 		$ip = $_POST['ip'];
 	}else{
-		echo "host is empty!";
+		echo "host is empty!<br>";
 		//break;
 	}
 	//Source IP
@@ -27,7 +27,7 @@
 	if(!empty($_POST['method'])){
 		$method = $_POST['method'];  
 	}else{
-		echo "method is empty!";
+		echo "method is empty!<br>";
 		//break;
 	}
 	//Port
@@ -38,7 +38,7 @@
 	if(!empty($_POST['time'])){
 		$exec_time = $_POST['time'];  
 	}else{
-		echo "exec_time is empty!";
+		echo "exec_time is empty!<br>";
 		//break;
 	}
 	//Thread
@@ -143,10 +143,10 @@
 		echo "Not work yet";
 		break;
 	case "":
-		echo "404 - Method Not Found";
+		echo "<br>404 - Method Not Found<br>";
 		break;
 	}
-	echo "Packet send: ".$packets. "<br>".
+	echo "<br>Packet send: ".$packets. "<br>".
 		"Packet/s: ".$packets/$exec_time."";
 	
 

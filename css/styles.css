@@ -57,6 +57,9 @@ a:active {
 .start-btn:hover{
 	background-color: #630404;
 }
+.start-btn:active{
+	background-color: #282828;
+}
 
 /*Menu*/
 .menu{
@@ -90,7 +93,8 @@ a:active {
 	opacity: 0.5;
 	transition: 2s;
 	padding: 5px;
-	width: 600px;
+	width: 35%;
+	min-width: 200px;
 }
 .logo:hover{
 	opacity: 0.2;
@@ -112,6 +116,11 @@ a:active {
 	min-height: 200px;
 	padding: 5px;
 }
+.help_links{
+	color: #c6c6c6;
+	padding: 10px;
+	font-size: 14pt;
 
+}
 
 

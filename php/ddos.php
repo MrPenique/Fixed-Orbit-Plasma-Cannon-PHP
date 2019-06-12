@@ -4,24 +4,24 @@
 	<select name="method" id="select" class="inputs" onchange="Check(this);" required>
 		<option  selected disabled selected value> -- select a Method -- </option>
 		<optgroup label="Layer 3:">
-			<option value="icmp" <?php if(!(phpversion() < 7.1)){echo "disabled";}?>>ICMP</option>
+			<option value="icmp">ICMP</option>
 			<!--<option value="smurf">ICMP SMURF</option>-->
 		<optgroup label="Layer 4:">
-		  <option value="udp" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>UDP Flood</option>
-		  <option value="tcp" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>TCP Flood</option>
-		  <option value="ntpattack" <?php if(!(phpversion() < 7.1)){echo "disabled";}?>>NTP Attack(DNS Attack)</option>
-		  <option value="ssdpattack" <?php if(!(phpversion() < 7.1)){echo "disabled";}?>>SSDP Attack</option>
+		  <option value="udp">UDP Flood</option>
+		  <option value="tcp">TCP Flood</option>
+		  <option value="ntpattack">NTP Attack(DNS Attack)</option>
+		  <option value="ssdpattack">SSDP Attack</option>
 
 		<optgroup label="Layer 7 - for websites:">
-			<option value="post" <?php if(!function_exists('curl_version')){echo "disabled";}?>>POST Flood</option>
-			<option value="get" <?php if(!function_exists('curl_version')){echo "disabled";}?>>GET Flood</option>
-			<option value="ssl" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>SSL Flood</option>
-		  	<option value="toxicssl" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>Toxic SSL Flood</option>
-			<option value="404" <?php if(!function_exists('curl_version')){echo "disabled";}?>>Evade CDN service</option>
-			<option value="slowloris" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>Slowloris Attack</option>
-			<option value="arme" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>ARME Attack</option>
-			<option value="hulk" <?php if(!function_exists('fsockopen')){echo "disabled";}?>>HULK Attack</option>
-			<option value="rudy" <?php if(!(phpversion() < 7.1)){echo "disabled";}?>>R.U.D.Y Attack</option>
+			<option value="post">POST Flood</option>
+			<option value="get">GET Flood</option>
+			<option value="ssl">SSL Flood</option>
+		  	<option value="toxicssl">Toxic SSL Flood</option>
+			<option value="404">Evade CDN service</option>
+			<option value="slowloris">Slowloris Attack</option>
+			<option value="arme">ARME Attack</option>
+			<option value="hulk">HULK Attack</option>
+			<option value="rudy">R.U.D.Y Attack</option>
 
 		<optgroup label="Layer 7 - for Minecraft:">
 			<option value="minecraftbandwitdh">Header Flood</option>
