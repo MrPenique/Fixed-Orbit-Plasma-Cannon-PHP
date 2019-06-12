@@ -146,7 +146,10 @@
 		echo "404 - Method Not Found";
 		break;
 	}
-	echo $packets;
+	echo "Packet send: ".$packets. "<br>".
+		"Packet/s: ".$packets/$exec_time."";
+	
+
 
 
 
